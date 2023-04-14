@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+	static StringBuilder sb = new StringBuilder();
 	static node trie;
 	static class node {
 		Map<String, node> child = new TreeMap<String, node>();
@@ -24,9 +25,9 @@ public class Main {
 		void print() {
 			for(String s : child.keySet()) {
 				for(int i = 1; i < child.get(s).depth; i++) {
-					System.out.print(" ");
+					sb.append(" ");
 				}
-				System.out.println(s);
+				sb.append(s).append("\n");
 				child.get(s).print();
 			}
 		}
@@ -42,6 +43,7 @@ public class Main {
 			trie.insert(line);
 		}
 		trie.print();
+		System.out.println(sb);
 	}
 
 }
